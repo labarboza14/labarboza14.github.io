@@ -62,12 +62,6 @@ const posts = (await getCollection('blog'))
           <a href="https://cumbuca.dev/" target="_blank" class="chip rose">🥥 Cumbuca Dev</a>
           <span class="chip">📍 Florianópolis · SC</span>
         </div>
-
-        <div class="hero-actions">
-          <a href="/fio" class="btn btn-rose">minha história</a>
-          <a href="https://br.linkedin.com/in/labarboza" target="_blank" rel="noopener" class="btn btn-li">LinkedIn →</a>
-          <a href="https://github.com/labarboza14" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
-        </div>
       </div>
 
       <div class="hero-photo-col">
@@ -88,6 +82,18 @@ const posts = (await getCollection('blog'))
             Antes disso tem contexto, tem gente, tem problema real.
             E quase sempre é aí que as coisas travam.
           </p>
+        </div>
+
+        <div class="hero-actions-right">
+          <a href="/fio" class="btn btn-rose">minha história</a>
+
+          <a href="https://br.linkedin.com/in/labarboza" target="_blank" rel="noopener" class="btn btn-li">
+            LinkedIn →
+          </a>
+
+          <a href="https://github.com/labarboza14" target="_blank" rel="noopener" class="btn btn-ghost">
+            GitHub
+          </a>
         </div>
       </div>
 
@@ -173,6 +179,19 @@ const posts = (await getCollection('blog'))
   background: #f6f7f9;
   border-left: 3px solid var(--rose-m);
   border-radius: 8px;
+}
+
+.hero-actions-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.hero-actions-right .btn {
+  width: 100%;
+  text-align: center;
 }
 
 @media (max-width: 700px) {
