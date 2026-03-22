@@ -126,6 +126,6 @@ Além da parte técnica, reforça a construção de um fluxo simples, sustentáv
 Mais do que um site pessoal, este projeto funciona como um espaço de organização, expressão e evolução contínua na tecnologia.
 
 ```
-
+<!-- trigger deploy -->
 ---
 
