@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · Glória Barboza</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #fdfcfa;
+      color: #1c1a18;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #login-screen {
+      width: 100%;
+      max-width: 380px;
+      padding: 24px;
+    }
+    .login-box {
+      background: #fff;
+      border: 1px solid #e8e3dc;
+      border-radius: 18px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    .login-logo {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #1c1a18;
+    }
+    .login-logo span { color: #a8385d; }
+    .login-sub {
+      font-size: 12px;
+      color: #9a9690;
+      margin-bottom: 28px;
+      font-family: monospace;
+      letter-spacing: .04em;
+    }
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #6b6860;
+      margin-bottom: 6px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-family: monospace;
+    }
+    input[type="password"] {
+      width: 100%;
+      background: #f7f4f0;
+      border: 1px solid #e8e3dc;
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 15px;
+      color: #1c1a18;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      margin-bottom: 16px;
+    }
+    input[type="password"]:focus {
+      border-color: #a8385d;
+      box-shadow: 0 0 0 3px rgba(168,56,93,.12);
+    }
+    button {
+      width: 100%;
+      background: #a8385d;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    button:hover { background: #8c2d4e; transform: translateY(-1px); }
+    .error {
+      display: none;
+      font-size: 12px;
+      color: #a8385d;
+      margin-top: 10px;
+      text-align: center;
+      font-family: monospace;
+    }
+    #cms-container { display: none; }
+  </style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Glória Barboza<span>·</span></div>
+    <div class="login-sub">painel de administração</div>
+    <label for="admin-pass">senha de acesso</label>
+    <input type="password" id="admin-pass" placeholder="••••••••" autocomplete="current-password">
+    <button onclick="checkPass()">entrar</button>
+    <div class="error" id="error-msg">senha incorreta. tente novamente.</div>
+  </div>
+</div>
+
+<div id="cms-container"></div>
+
+<script>
+  // ⚠️ TROQUE ESTA SENHA antes de publicar
+  // Para gerar um hash seguro: abra o console e rode:
+  // await crypto.subtle.digest('SHA-256', new TextEncoder().encode('suasenha'))
+  //   .then(b => Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join(''))
+  const PASS_HASH = 'COLE_O_HASH_SHA256_AQUI';
+
+  async function hashStr(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(x => x.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function checkPass() {
+    const input = document.getElementById('admin-pass').value;
+    if (!input) return;
+
+    const hash = await hashStr(input);
+
+    if (hash === PASS_HASH) {
+      document.getElementById('login-screen').style.display = 'none';
+      loadCMS();
+    } else {
+      document.getElementById('error-msg').style.display = 'block';
+      document.getElementById('admin-pass').value = '';
+      document.getElementById('admin-pass').focus();
+    }
+  }
+
+  // Permite pressionar Enter para logar
+  document.getElementById('admin-pass').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPass();
+  });
+
+  function loadCMS() {
+    // Carrega o Decap CMS dinamicamente só após autenticação
+    const identityScript = document.createElement('script');
+    identityScript.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+    document.head.appendChild(identityScript);
+
+    const cmsScript = document.createElement('script');
+    cmsScript.src = 'https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js';
+    document.body.appendChild(cmsScript);
+  }
+</script>
+
+</body>
+</html>

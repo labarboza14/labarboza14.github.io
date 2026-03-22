@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Não indexar o painel de administração
+Disallow: /admin/
+
+Sitemap: https://labarboza14.github.io/sitemap-index.xml

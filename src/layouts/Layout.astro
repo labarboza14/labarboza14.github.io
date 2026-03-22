@@ -1,0 +1,130 @@
+---
+import '../styles/global.css';
+const {
+  title = 'Glória Barboza · Python, dados e comunidade',
+  description = 'Trabalho na interseção entre tecnologia e operação. Python, BigQuery, GCP e automação para resolver problemas reais. Co-organizadora da Python Floripa. Florianópolis, SC.',
+  ogImage = '/images/gloria-avatar.jpeg',
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const canonical = `https://labarboza14.github.io${currentPath}`;
+const ogImageFull = `https://labarboza14.github.io${ogImage}`;
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO básico -->
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+  <meta name="author" content="Glória Barboza">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonical}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={ogImageFull}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Glória Barboza">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImageFull}>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Favicon simples -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+</head>
+<body>
+
+<a href="#main" class="skip-link">ir para o conteúdo</a>
+
+<div class="topbar" role="banner">
+  <a href="/" class="logo" aria-label="Início">
+    Glória Barboza<span class="logo-dot">·</span>
+  </a>
+  <nav class="nav-links" aria-label="Navegação principal">
+    <a href="/" class={currentPath === '/' ? 'active' : ''}>início</a>
+    <a href="/anotacoes" class={currentPath.startsWith('/anotacoes') ? 'active' : ''}>anotações</a>
+    <a href="/laboratorio" class={currentPath === '/laboratorio' ? 'active' : ''}>laboratório</a>
+    <a href="/palco" class={currentPath === '/palco' ? 'active' : ''}>no palco</a>
+    <a href="/fio" class={currentPath === '/fio' ? 'active' : ''}>o fio</a>
+    <a href="/conversa" class={currentPath === '/conversa' ? 'active' : ''}>bora conversar</a>
+  </nav>
+  <div class="topbar-r" aria-label="Controles de acessibilidade">
+    <button class="ctrl" id="font-minus" aria-label="Diminuir fonte">A−</button>
+    <button class="ctrl" id="font-plus" aria-label="Aumentar fonte">A+</button>
+    <button class="ctrl" id="theme-btn" aria-label="Alternar tema claro/escuro">🌙</button>
+  </div>
+</div>
+
+<main id="main">
+  <slot />
+</main>
+
+<footer role="contentinfo">
+  <div>
+    feito com cuidado por
+    <a href="https://github.com/labarboza14" target="_blank" rel="noopener">Glória Barboza</a>
+    · Florianópolis · SC
+  </div>
+  <div>
+    <a href="https://github.com/labarboza14" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="https://br.linkedin.com/in/labarboza" target="_blank" rel="noopener">LinkedIn</a> ·
+    <a href="https://g.dev/labarbozadev" target="_blank" rel="noopener">Google Dev</a>
+  </div>
+  <div style="margin-top:4px">
+    <span class="live-dot"></span>sem rastreamento · LGPD · <a href="/sitemap-index.xml">sitemap</a>
+  </div>
+</footer>
+
+<script>
+  // Tema claro/escuro com persistência
+  const themeBtn = document.getElementById('theme-btn') as HTMLButtonElement;
+  const html = document.documentElement;
+
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    html.setAttribute('data-theme', 'dark');
+    themeBtn.textContent = '☀️';
+  }
+
+  themeBtn.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? '' : 'dark');
+    themeBtn.textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+
+  // Tamanho da fonte com persistência
+  let fs = parseFloat(localStorage.getItem('fs') || '1');
+  html.style.setProperty('--fs', fs.toFixed(2));
+
+  document.getElementById('font-minus')!.addEventListener('click', () => {
+    fs = Math.max(0.85, fs - 0.08);
+    html.style.setProperty('--fs', fs.toFixed(2));
+    localStorage.setItem('fs', fs.toFixed(2));
+  });
+
+  document.getElementById('font-plus')!.addEventListener('click', () => {
+    fs = Math.min(1.4, fs + 0.08);
+    html.style.setProperty('--fs', fs.toFixed(2));
+    localStorage.setItem('fs', fs.toFixed(2));
+  });
+</script>
+
+</body>
+</html>

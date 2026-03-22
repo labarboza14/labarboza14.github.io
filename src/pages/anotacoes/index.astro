@@ -1,0 +1,48 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+<Layout title="Anotações de campo · Glória Barboza" description="O que estou pensando, aprendendo e processando. Sem filtro de perfeição.">
+  <div class="container">
+    <div class="eyebrow">diário aberto</div>
+    <div class="ph">
+      <h1 class="ph-title">Anotações de campo</h1>
+      <p class="ph-desc">O que estou pensando, aprendendo e processando. Sem filtro de perfeição, publicado quando tem algo que vale compartilhar.</p>
+    </div>
+
+    <div class="cms-note">
+      <div style="font-size:20px;flex-shrink:0;margin-top:2px">✏️</div>
+      <div class="cms-body">
+        <strong>Editável sem código via Decap CMS</strong>
+        Acesse <code>/admin</code> para escrever e publicar posts sem tocar no terminal.
+      </div>
+    </div>
+
+    <div>
+      {posts.map(post => {
+        const date = new Date(post.data.date);
+        const day = date.toLocaleDateString('pt-BR', { day: '2-digit' });
+        const month = date.toLocaleDateString('pt-BR', { month: 'short' }).replace('.', '');
+        return (
+          <a href={`/anotacoes/${post.slug}`} class="post-row">
+            <div class="post-dc">
+              <span class="post-day">{day}</span>
+              <span class="post-mon">{month}</span>
+            </div>
+            <div>
+              <span class="tag">{post.data.tag}</span>
+              <div class="post-title">{post.data.title}</div>
+              <div class="post-excerpt">{post.data.excerpt}</div>
+              <div class="post-meta">
+                <span>{post.data.readTime}</span>
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</Layout>

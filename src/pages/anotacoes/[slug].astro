@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const date = new Date(post.data.date).toLocaleDateString('pt-BR', {
+  day: '2-digit', month: 'long', year: 'numeric'
+});
+---
+<Layout title={`${post.data.title} · Glória Barboza`} description={post.data.excerpt}>
+  <div class="container">
+    <div class="article-header">
+      <span class="tag" style="margin-bottom:14px;display:inline-block">{post.data.tag}</span>
+      <h1 class="article-title">{post.data.title}</h1>
+      <div class="article-meta">
+        <span>{date}</span>
+        <span>{post.data.readTime}</span>
+      </div>
+    </div>
+    <div class="article-body">
+      <Content />
+    </div>
+    <div class="article-nav">
+      <a href="/anotacoes">← todas as anotações</a>
+      <a href="/conversa">bora conversar? →</a>
+    </div>
+  </div>
+</Layout>

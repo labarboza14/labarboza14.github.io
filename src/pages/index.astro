@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 2);
+---
+<Layout
+  title="Glória Barboza · Python, dados e comunidade em Florianópolis"
+  description="Trabalho na interseção entre tecnologia e operação. Python, BigQuery, GCP e automação para resolver problemas reais. Co-organizadora da Python Floripa."
+  ogImage="/images/gloria-avatar.jpeg"
+>
+  <div class="container">
+
+    <div class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">python · dados · operação · comunidade</div>
+        <h1 class="hero-name">Olá,<br>sou a <em>Glória</em></h1>
+        <div class="hero-role">
+          <span>Python</span><span class="hero-sep">·</span>
+          <span>BigQuery</span><span class="hero-sep">·</span>
+          <span>GCP</span><span class="hero-sep">·</span>
+          <span>automação</span><span class="hero-sep">·</span>
+          <span>comunidade</span>
+        </div>
+        <p class="hero-bio">
+          Trabalho na interseção entre tecnologia e operação. Automatizo o que trava, organizo o que está em caos e escrevo código que resolve problemas reais. Com Python, dados e a clareza de quem entende o negócio antes de abrir o editor.
+        </p>
+        <div class="hero-manifesto">
+          "Não é sobre senioridade. É sobre clareza de raciocínio e qualidade na entrega."
+        </div>
+        <div class="hero-chips">
+          <span class="chip rose">🐍 Python Floripa</span>
+          <span class="chip rose">💜 Cumbuca Dev</span>
+          <span class="chip blue">🎙️ palestrante</span>
+          <span class="chip">📍 Florianópolis · SC</span>
+        </div>
+        <div class="hero-actions">
+          <a href="/fio" class="btn btn-rose">minha história</a>
+          <a href="https://br.linkedin.com/in/labarboza" target="_blank" rel="noopener" class="btn btn-li">LinkedIn →</a>
+          <a href="https://github.com/labarboza14" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        </div>
+      </div>
+
+      <div class="hero-photo-col">
+        <div class="hero-photo-frame">
+          <img
+            src="/images/gloria-avatar.jpeg"
+            alt="Glória Barboza sorrindo"
+            width="240"
+            height="320"
+            loading="eager"
+            decoding="async"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="home-grid">
+      <div>
+        <div class="sec-head">
+          <div class="sec-title">do caderno aberto</div>
+          <a href="/anotacoes" class="sec-link">ler tudo →</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          {posts.length > 0 ? posts.map(post => (
+            <a href={`/anotacoes/${post.slug}`} class="card">
+              <div class="card-eyebrow">{new Date(post.data.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })}</div>
+              <span class="tag">{post.data.tag}</span>
+              <div class="card-title">{post.data.title}</div>
+              <div class="card-excerpt">{post.data.excerpt}</div>
+              <div class="card-meta"><span>{post.data.readTime}</span></div>
+            </a>
+          )) : (
+            <div style="background:var(--stone-l);border:1px dashed var(--stone-m);border-radius:var(--r-lg);padding:28px">
+              <div class="card-eyebrow">📝 em breve</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--text3);font-style:italic;margin-top:6px;margin-bottom:6px">Primeiro post chegando</div>
+              <div style="font-size:13px;color:var(--text4);line-height:1.7;font-family:var(--sans)">As anotações de campo estão a caminho.</div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-head">
+          <div class="sec-title">case em destaque</div>
+          <a href="/laboratorio" class="sec-link">laboratório →</a>
+        </div>
+        <a href="https://github.com/labarboza14/verifica_enderecos" target="_blank" rel="noopener" class="case-card">
+          <div class="case-header">
+            <div class="case-kicker">Python · Automação · Dados reais</div>
+            <div class="case-title">verifica_enderecos</div>
+            <div class="case-sub">Migração de 10.000 segurados entre sistemas</div>
+          </div>
+          <div class="case-body">
+            <div class="case-stats">
+              <div class="stat"><span class="stat-num">10k</span><div class="stat-label">registros analisados</div></div>
+              <div class="stat"><span class="stat-num">95%</span><div class="stat-label">corrigidos automaticamente</div></div>
+              <div class="stat"><span class="stat-num">0</span><div class="stat-label">clientes perdidos</div></div>
+            </div>
+            <div class="case-story">
+              <p>Script Python que verificou, corrigiu e padronizou endereços de seguradoras em SC e RS, incluindo regiões afetadas pelas chuvas de 2024.</p>
+            </div>
+          </div>
+        </a>
+
+        <div class="sec-head" style="margin-top:22px">
+          <div class="sec-title">última palestra</div>
+          <a href="/palco" class="sec-link">todas →</a>
+        </div>
+        <a href="/palco" class="card">
+          <div class="card-eyebrow">Code Island · Control+Z · Florianópolis · maio 2026</div>
+          <span class="tag">automação · produção</span>
+          <div class="card-title">"Era só uma tag": o dia em que quase reescrevi 3.000 registros em produção</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 52px;
+  align-items: start;
+  padding-bottom: 52px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 52px;
+}
+.hero-content { padding-top: 8px; }
+.hero-photo-col {
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+}
+.hero-photo-frame {
+  width: 240px;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 2px solid var(--rose-m);
+  box-shadow: var(--sh-lg);
+  background: var(--bg2);
+  aspect-ratio: 3/4;
+}
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+@media (max-width: 700px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; }
+  .hero-photo-col { justify-content: flex-start; }
+  .hero-photo-frame { width: 160px; }
+}
+</style>

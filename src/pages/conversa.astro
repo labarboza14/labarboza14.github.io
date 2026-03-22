@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Bora conversar? · Glória Barboza"
+  description="Aberta a parcerias, convites para palestrar, colaborações em comunidade e conversas que gerem algo bom."
+>
+  <div class="container">
+    <div class="eyebrow">me encontra aqui</div>
+    <div class="ph">
+      <h1 class="ph-title">Bora conversar?</h1>
+      <p class="ph-desc">Aberta a parcerias, convites para palestrar, colaborações em comunidade e conversas que gerem algo bom.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <p class="contact-lead">Me conta o que você está pensando. <em>Adoro conversa sobre tecnologia com propósito, pessoas e projetos que resolvem problemas reais.</em></p>
+        <div class="cways">
+          <a class="cway" href="https://github.com/labarboza14" target="_blank" rel="noopener">
+            <div class="cway-icon">⌨️</div>
+            <div>
+              <div class="cway-label">GitHub</div>
+              <div class="cway-sub">labarboza14</div>
+            </div>
+          </a>
+          <a class="cway" href="https://br.linkedin.com/in/labarboza" target="_blank" rel="noopener">
+            <div class="cway-icon">💼</div>
+            <div>
+              <div class="cway-label">LinkedIn</div>
+              <div class="cway-sub">linkedin.com/in/labarboza</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="form-box" id="form-wrap">
+          <div class="form-h">manda uma mensagem</div>
+          <div class="form-s">Respondo em até 48h. Promessa de co-organizadora de comunidade. 🌸</div>
+          <!-- ⚠️ ANTES DE PUBLICAR: substitua SEU_ID_FORMSPREE pelo ID gerado em formspree.io -->
+          <form action="https://formspree.io/f/mpqygwzv" method="POST">
+            <div class="form-g">
+              <label class="form-l" for="nome">seu nome</label>
+              <input class="form-i" id="nome" type="text" name="nome" placeholder="como posso te chamar?" required>
+            </div>
+            <div class="form-g">
+              <label class="form-l" for="email">email</label>
+              <input class="form-i" id="email" type="email" name="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-g">
+              <label class="form-l" for="assunto">assunto</label>
+              <select class="form-sel" id="assunto" name="assunto">
+                <option>parceria em projeto</option>
+                <option>convite para palestra</option>
+                <option>colaboração em comunidade</option>
+                <option>só quero conversar</option>
+                <option>outro</option>
+              </select>
+            </div>
+            <div class="form-g">
+              <label class="form-l" for="mensagem">mensagem</label>
+              <textarea class="form-ta" id="mensagem" name="mensagem" placeholder="me conta o que você tem em mente..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-rose" style="width:100%">enviar mensagem</button>
+            <div class="form-lgpd">
+              <span>🔒</span>
+              <span>Seus dados são usados apenas para responder sua mensagem. Nada é compartilhado com terceiros. Em conformidade com a LGPD.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

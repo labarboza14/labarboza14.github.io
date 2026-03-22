@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Laboratório · Glória Barboza" description="Projetos com problema real, decisão real e aprendizado real.">
+  <div class="container">
+    <div class="eyebrow">GitHub · experimentos com propósito</div>
+    <div class="ph">
+      <h1 class="ph-title">Laboratório</h1>
+      <p class="ph-desc">Cada projeto aqui nasceu de um problema real ou de uma curiosidade deliberada. Código como registro de aprendizado, transparente sobre o processo, inclusive os sustos.</p>
+    </div>
+
+    <!-- PROJETO PRINCIPAL -->
+    <div style="margin-bottom:24px">
+      <a href="https://github.com/labarboza14/verifica_enderecos" target="_blank" rel="noopener" class="case-card">
+        <div class="case-header">
+          <div class="case-kicker">★ projeto principal · Python · API · apresentado na Python Sul 2025</div>
+          <div class="case-title">verifica_enderecos</div>
+          <div class="case-sub">Correção automatizada de endereços com Python e ViaCEP</div>
+        </div>
+        <div class="case-body">
+          <div class="case-stats">
+            <div class="stat"><span class="stat-num">10.000</span><div class="stat-label">registros processados</div></div>
+            <div class="stat"><span class="stat-num">9.500</span><div class="stat-label">corrigidos automaticamente</div></div>
+            <div class="stat"><span class="stat-num">95%</span><div class="stat-label">taxa de resolução</div></div>
+          </div>
+          <div class="case-story">
+            <p>A tarefa parecia simples: migrar a base de clientes de uma corretora de seguros residenciais entre dois sistemas, garantindo que nenhum segurado ficasse de fora. O detalhe era que estávamos falando de SC e RS, incluindo regiões afetadas pelas enchentes de 2024. Perder um registro significava deixar alguém sem cobertura em um momento crítico.</p>
+            <p>O script resolveu consultando a API ViaCEP por CEP e, quando o CEP falhava, tentando pelo endereço. Corrigiu, padronizou e destacou em amarelo cada campo alterado. Os 500 casos que resistiram foram sinalizados com rastreabilidade para validação manual. No fim, 100% da base foi migrada.</p>
+          </div>
+          <div class="case-quote">"Resolver esses 500 casos não foi apenas técnico. Foi proteção de risco, receita e reputação."</div>
+          <div class="case-footer">
+            <div class="case-tags">
+              <span class="case-tag">Python</span>
+              <span class="case-tag">API REST</span>
+              <span class="case-tag">Pandas</span>
+              <span class="case-tag">openpyxl</span>
+              <span class="case-tag">automação</span>
+            </div>
+            <span class="case-link">ver repositório →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- pyc-man -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div>
+          <div class="proj-name">pyc-man</div>
+          <div style="font-size:12px;color:var(--text4);font-family:var(--mono)">exercício de lógica e estado</div>
+        </div>
+        <span class="proj-lang">Python</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-context-label">por que construí</div>
+        <div class="proj-story">
+          <p>Tem um momento na aprendizagem em que você percebe que sabe usar bibliotecas, mas não sabe o que acontece por baixo. Pac-Man do zero, sem engine e sem framework de jogos, foi o jeito que encontrei de me confrontar com isso.</p>
+          <p>O jogo precisava de loop, estado, colisão, renderização e lógica de inimigos, tudo coordenado ao mesmo tempo. Não tem como terceirizar esse raciocínio para uma biblioteca. Ou você pensa, ou não funciona.</p>
+        </div>
+        <div class="proj-learning">"Gerenciar estado complexo com clareza é uma das habilidades mais subestimadas em programação. Jogos ensinam isso de um jeito que tutoriais não conseguem."</div>
+        <div class="proj-footer">
+          <div class="proj-tags"><span class="proj-tag">lógica</span><span class="proj-tag">OOP</span><span class="proj-tag">estado</span><span class="proj-tag">game loop</span></div>
+          <a href="https://github.com/labarboza14/pyc-man" target="_blank" rel="noopener" class="proj-link">ver repositório →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- miniagenda -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div>
+          <div class="proj-name">miniagenda</div>
+          <div style="font-size:12px;color:var(--text4);font-family:var(--mono)">JavaScript puro, sem rede de segurança</div>
+        </div>
+        <span class="proj-lang">JavaScript</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-context-label">a decisão</div>
+        <div class="proj-story">
+          <p>React, Vue, Angular. Todo mundo aprende JavaScript através de um framework. Mas o que acontece quando você tira tudo isso e fica só com a linguagem? Esse projeto nasceu dessa pergunta.</p>
+          <p>Uma agenda com CRUD completo e armazenamento local, escrita em vanilla JS. Sem nada para simplificar, abstrair ou salvar. O resultado foi revelador: ficou claro exatamente o que eu entendia de verdade e o que eu só achava que entendia.</p>
+        </div>
+        <div class="proj-learning">"Frameworks são ótimos. Mas entendê-los melhor começa em saber o que existe antes deles."</div>
+        <div class="proj-footer">
+          <div class="proj-tags"><span class="proj-tag">vanilla JS</span><span class="proj-tag">CRUD</span><span class="proj-tag">localStorage</span><span class="proj-tag">DOM</span></div>
+          <a href="https://github.com/labarboza14/miniagenda" target="_blank" rel="noopener" class="proj-link">ver repositório →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- export_sz -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div>
+          <div class="proj-name">export_sz</div>
+          <div style="font-size:12px;color:var(--text4);font-family:var(--mono)">automação de exportação de dados</div>
+        </div>
+        <span class="proj-lang">Python</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-context-label">contexto</div>
+        <div class="proj-story">
+          <p>Um processo que precisava ser feito repetidamente, com risco de erro humano a cada vez. A solução foi automatizar com Python e tirar isso da lista de tarefas manuais do time.</p>
+          <p style="color:var(--text4);font-style:italic;font-size:13px">Adicione mais contexto sobre este projeto quando for publicar.</p>
+        </div>
+        <div class="proj-learning">"Automação bem feita não elimina trabalho. Redireciona energia para o que realmente importa."</div>
+        <div class="proj-footer">
+          <div class="proj-tags"><span class="proj-tag">automação</span><span class="proj-tag">Python</span><span class="proj-tag">dados</span></div>
+          <a href="https://github.com/labarboza14/export_sz" target="_blank" rel="noopener" class="proj-link">ver repositório →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- projeto_analise_saude -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div>
+          <div class="proj-name">projeto_analise_saude</div>
+          <div style="font-size:12px;color:var(--text4);font-family:var(--mono)">análise exploratória de dados de saúde</div>
+        </div>
+        <span class="proj-lang">Python · Dados</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-context-label">o que explorei</div>
+        <div class="proj-story">
+          <p>Primeira vez trabalhando com análise exploratória de verdade: dados de saúde pública, Pandas, visualizações. O processo revelou algo importante: dados sensíveis exigem uma responsabilidade que vai além do técnico.</p>
+          <p style="color:var(--text4);font-style:italic;font-size:13px">Adicione a pergunta real que você tentou responder com os dados.</p>
+        </div>
+        <div class="proj-learning">"Trabalhar com dados de saúde muda a forma como você pensa sobre o impacto do que está fazendo."</div>
+        <div class="proj-footer">
+          <div class="proj-tags"><span class="proj-tag">Pandas</span><span class="proj-tag">NumPy</span><span class="proj-tag">visualização</span><span class="proj-tag">saúde</span></div>
+          <a href="https://github.com/labarboza14/projeto_analise_saude" target="_blank" rel="noopener" class="proj-link">ver repositório →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- pascal_progress -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div>
+          <div class="proj-name">pascal_progress</div>
+          <div style="font-size:12px;color:var(--text4);font-family:var(--mono)">lógica em Pascal para compreender ABL</div>
+        </div>
+        <span class="proj-lang">Pascal</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-context-label">por que existe</div>
+        <div class="proj-story">
+          <p>Progress ABL é uma linguagem que governa ERPs reais em empresas reais. Não está nos currículos dos bootcamps, não aparece nas listas de "linguagens do futuro", mas ainda sustenta operações críticas no mundo todo.</p>
+          <p>Usar Pascal para simular a lógica do ABL foi um exercício de entender como se pensa em sistemas que a maioria das pessoas ignora. Quem consegue ler o que foi escrito antes, lê melhor o que está sendo escrito agora.</p>
+        </div>
+        <div class="proj-learning">"Sistemas legados não são o passado. São a fundação que ninguém quis documentar."</div>
+        <div class="proj-footer">
+          <div class="proj-tags"><span class="proj-tag">Pascal</span><span class="proj-tag">Progress ABL</span><span class="proj-tag">sistemas legados</span></div>
+          <a href="https://github.com/labarboza14/pascal_progress" target="_blank" rel="noopener" class="proj-link">ver repositório →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- sorteador -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div>
+          <div class="proj-name">sorteador</div>
+          <div style="font-size:12px;color:var(--text4);font-family:var(--mono)">utilitário de comunidade</div>
+        </div>
+        <span class="proj-lang">Python</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-context-label">como nasceu</div>
+        <div class="proj-story">
+          <p>Nos meetups da Python Floripa, a gente faz dinâmicas. E toda vez que precisava sortear algo, era caneta e papel ou algum site genérico. Um dia resolvi fazer o nosso próprio.</p>
+          <p>É pequeno, direto e resolve um problema real de uma comunidade real. Não é o projeto mais complexo do portfólio, mas é talvez o mais honesto sobre o que tecnologia deveria ser: útil para quem está perto de você.</p>
+        </div>
+        <div class="proj-learning">"Nem todo código precisa ser impressionante. Precisa ser útil."</div>
+        <div class="proj-footer">
+          <div class="proj-tags"><span class="proj-tag">utilitário</span><span class="proj-tag">comunidade</span><span class="proj-tag">Python</span></div>
+          <a href="https://github.com/labarboza14/sorteador" target="_blank" rel="noopener" class="proj-link">ver repositório →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</Layout>
