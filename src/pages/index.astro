@@ -31,23 +31,31 @@ const posts = (await getCollection('blog'))
           <span>comunidades</span>
         </div>
 
-        <p class="hero-bio">
-          Trabalho entre tecnologia e operação.<br /><br />
+        <div class="hero-bio">
+          <p>Trabalho entre tecnologia e operação.</p>
 
-          Antes de sair escrevendo código, eu tento entender o que está acontecendo.<br />
-          Uso dados pra dar contexto, organizo o que está meio caótico
-          e automatizo o que está travando.<br /><br />
+          <p>
+            Antes de sair escrevendo código, eu tento entender o que está acontecendo.
+            Uso dados pra dar contexto, organizo o que está meio caótico
+            e automatizo o que está travando.
+          </p>
 
-          Nem sempre é sobre escrever mais código.<br />
-          Às vezes, é só sobre enxergar melhor o problema.<br /><br />
+          <p>
+            Nem sempre é sobre escrever mais código.
+            Às vezes, é só sobre enxergar melhor o problema.
+          </p>
 
-          É nesse encontro entre dados, produto e código
-          que eu gosto de estar.<br /><br />
+          <p>
+            É nesse encontro entre dados, produto e código
+            que eu gosto de estar.
+          </p>
 
-          No fim, o que me interessa mesmo é resolver coisas reais,<br />
-          com clareza, com intenção<br />
-          e pensando em quem está do outro lado.
-        </p>
+          <p>
+            No fim, o que me interessa mesmo é resolver coisas reais,
+            com clareza, com intenção
+            e pensando em quem está do outro lado.
+          </p>
+        </div>
 
         <div class="hero-chips">
           <a href="https://python.floripa.br/" target="_blank" class="chip blue">💙 Python Floripa</a>
@@ -75,9 +83,7 @@ const posts = (await getCollection('blog'))
         </div>
 
         <div class="hero-note">
-          <p>
-            Código não é o ponto de partida, é consequência.
-          </p>
+          <p>Código não é o ponto de partida, é consequência.</p>
           <p>
             Antes disso tem contexto, tem gente, tem problema real.
             E quase sempre é aí que as coisas travam.
@@ -109,11 +115,26 @@ const posts = (await getCollection('blog'))
   padding-top: 12px;
 }
 
+.hero-bio {
+  max-width: 520px;
+}
+
+.hero-bio p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
 .hero-chips {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.chip {
+  text-decoration: none;
+  white-space: nowrap;
+  color: inherit;
 }
 
 .hero-photo-col {
@@ -146,21 +167,12 @@ const posts = (await getCollection('blog'))
   width: 100%;
   max-width: 260px;
   padding: 16px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text3);
   background: #f6f7f9;
   border-left: 3px solid var(--rose-m);
   border-radius: 8px;
-}
-
-.hero-bio {
-  max-width: 520px;
-}
-
-.hero-bio p {
-  margin-bottom: 16px;
-  line-height: 1.6;
 }
 
 @media (max-width: 700px) {
