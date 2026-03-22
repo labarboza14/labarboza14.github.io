@@ -6,8 +6,9 @@ export default defineConfig({
   site: 'https://labarboza14.github.io',
   integrations: [
     mdx(),
-    sitemap(),
+    // sitemap(),
   ],
+});
   markdown: {
     shikiConfig: {
       theme: 'github-light',
