@@ -7,41 +7,63 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 2);
 ---
+
 <Layout
   title="Glória Barboza · Python, dados e comunidade em Florianópolis"
   description="Trabalho na interseção entre tecnologia e operação. Python, BigQuery, GCP e automação para resolver problemas reais. Co-organizadora da Python Floripa."
   ogImage="/images/gloria-avatar.jpeg"
 >
   <div class="container">
-
     <div class="hero">
       <div class="hero-content">
-        <div class="eyebrow">python · dados · operação · comunidade</div>
-        <h1 class="hero-name">Olá,<br>sou a <em>Glória</em></h1>
+
+        <div class="eyebrow">tecnologia &gt; pessoas</div>
+
+        <h1 class="hero-name">
+          Olá,<br>sou a <em>Glória</em>
+        </h1>
+
         <div class="hero-role">
           <span>Python</span><span class="hero-sep">·</span>
-          <span>BigQuery</span><span class="hero-sep">·</span>
-          <span>GCP</span><span class="hero-sep">·</span>
+          <span>dados</span><span class="hero-sep">·</span>
           <span>automação</span><span class="hero-sep">·</span>
-          <span>comunidade</span>
+          <span>comunidades</span>
         </div>
+
         <p class="hero-bio">
-          Trabalho na interseção entre tecnologia e operação. Automatizo o que trava, organizo o que está em caos e escrevo código que resolve problemas reais. Com Python, dados e a clareza de quem entende o negócio antes de abrir o editor.
+          Trabalho entre tecnologia e operação.<br><br>
+
+          Antes de sair escrevendo código, eu tento entender o que está acontecendo.<br>
+          Uso dados pra dar contexto, organizo o que está meio caótico
+          e automatizo o que está travando.<br><br>
+
+          Nem sempre é sobre escrever mais código.<br>
+          Às vezes, é só sobre enxergar melhor o problema.<br><br>
+
+          É nesse encontro entre dados, produto e código
+          que eu gosto de estar.<br><br>
+
+          No fim, o que me interessa mesmo é resolver coisas reais,<br>
+          com clareza, com intenção<br>
+          e pensando em quem está do outro lado.
         </p>
-        <div class="hero-manifesto">
-          "Não é sobre senioridade. É sobre clareza de raciocínio e qualidade na entrega."
-        </div>
+
         <div class="hero-chips">
-          <span class="chip rose">🐍 Python Floripa</span>
-          <span class="chip rose">💜 Cumbuca Dev</span>
-          <span class="chip blue">🎙️ palestrante</span>
+          <a href="https://python.floripa.br/" target="_blank" class="chip blue">
+            💙 Python Floripa
+          </a>
+          <a href="https://cumbuca.dev/" target="_blank" class="chip rose">
+            🥥 Cumbuca Dev
+          </a>
           <span class="chip">📍 Florianópolis · SC</span>
         </div>
+
         <div class="hero-actions">
           <a href="/fio" class="btn btn-rose">minha história</a>
           <a href="https://br.linkedin.com/in/labarboza" target="_blank" rel="noopener" class="btn btn-li">LinkedIn →</a>
           <a href="https://github.com/labarboza14" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
         </div>
+
       </div>
 
       <div class="hero-photo-col">
